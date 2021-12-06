@@ -17,4 +17,4 @@ L'utilisateur devrait être capable de :
 
 _ps : commencez par un_ `npm i`
 
-_ps2 : sass/scss loader est installé dans le projet_
+_ps2 : sass/scss loader est installé dans le projet_# crowdfunding
