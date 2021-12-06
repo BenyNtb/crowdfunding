@@ -1,15 +1,839 @@
 <template>
-  <div id="app">
+  <div>
+    <Nav/>
+    <Bookmark/>
+    <Price/>
+    <About/>
+    <Thanks/>
+
   </div>
 </template>
 
 <script>
 
+  import Nav from './components/Nav.vue';
+  import Bookmark from './components/Bookmark.vue';
+  import Price from './components/Price.vue';
+  import About from './components/About.vue';
+  import Thanks from './components/Thanks.vue';
 export default {
   name: 'App',
+  components: {
+      Nav,
+      Bookmark,
+      Price,
+      About,
+      Thanks
+    },
 }
 </script>
 
-<style lang="">
+<style>
+  html {
+
+    box-sizing: border-box;
+    font-size: 100%;
+    
+
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+:root {
+
+    --cyan: hsl(176, 50%, 47%);
+    --dark-cyan: hsl(176, 72%, 28%);
+    --black: hsl(0, 0%, 0%);
+    --dark-gray: hsl(0, 0%, 48%);
+
+    --fw-400: 400;
+    --fw-500: 500;
+    --fw-700: 700;
+
+    --margin1: 1.8rem;
+
+    --trans: 0.3s;
+
+}
+
+body {
+    font-family: 'Commissioner', sans-serif;
+    background-color: rgb(250, 250, 250);
+
+    position: relative;
+    
+}
+
+main {
+
+    /* padding-left: 1.563rem;
+    padding-right: 1.563rem; */
+    padding: 0 9%;
+    margin-bottom: 40px;
+    
+}
+  .main-section {
+    
+    background-color: white;
+    width: 100%;
+    max-width: 45rem;
+    position: relative; 
+    bottom: 72.5px;
+    border-radius: 7px;
+    padding: 1.375rem 1.375rem;
+    text-align: center;
+    border: solid 1.5px rgba(0, 0, 0, 0.1);
+    padding-bottom: 0rem;
+    margin: 0 auto 1.75rem;
+
+}
+
+#top-main-section h1 {
+
+    font-weight: var(--fw-700);
+    font-size: 1.5rem;
+    margin-top: var(--margin1);
+    margin-bottom: 1.3rem;
+    color: black;
+    
+}
+
+#top-main-section p {
+
+    font-size: 0.95rem;
+    opacity: 0.65;
+    line-height: 1.7;
+    padding-bottom: 0;
+}
+
+#main-section-btn-bookmark {
+
+    display: flex;
+    justify-content: space-between; 
+    width: 100%;
+
+    margin-top: 1.688rem;
+    margin-bottom: 2.5rem;
+    
+
+}
+
+#main-section-btn-bookmark button {
+
+    background-color: var(--cyan);
+    color: white;
+    border: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 3.5rem;
+    font-weight: var(--fw-700);
+    border-radius: 2rem;
+    display: inline;
+    position: relative;
+    min-width: 13.375rem;
+    transition: var(--trans);
+
+}
+
+#main-section-btn-bookmark button:hover {
+    background-color: var(--dark-cyan);
+}
+
+.bookmark-circle  {
+
+    display: inline;
+    height: 100%;
+    cursor: pointer;
+    transition: var(--trans);
+
+}
+
+.bookmark-circle:hover {
+    fill: var(--dark-cyan);
+}
+
+
+
+.bookmark-circle.marked {
+    fill: var(--dark-cyan);
+}
+
+.bookmark-shape {
+    fill: white;
+}
+
+.bookmark-shape.inner-marked {
+    
+    fill: #B1B1B1;
+}
+
+#bookmark-btn-mobile-desktop {
+    display: flex;
+   
+}
+
+.bookmark-desktop {
+    display: none;
+}
+
+#mastercraft-logo {
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: -1.5px;
+}
+
+.figures h1 {
+
+    font-weight: var(--fw-700);
+    margin-bottom: 0.8rem;
+
+}
+
+#second-main-section-backers {
+
+    margin-top: 0.625rem;
+}
+
+.figures p {
+
+    color: var(--dark-gray);
+}
+
+#second-main-section-first::after {
+
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    height: 0.6px;
+    width: 28.5%;
+    margin: auto;
+    margin-top: 25px;
+    border-radius: 10px;
+}
+
+#second-main-section-second::after {
+
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    height: 0.6px;
+    width: 28.5%;
+    margin: auto;
+    margin-top: 25px;
+    border-radius: 10px;
+}
+
+#second-main-section-third p {
+
+    margin-bottom: 2.313rem;
+}
+
+#progress-bar {
+
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 15px;
+    height: 0.7rem;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+
+}
+
+.progress {
+
+    background: var(--cyan);
+    border: none;
+    border-radius: 15px;
+    height: 0.6rem;
+    margin: 0;
+
+}
+
+#third-main-section {
+    padding-bottom: 1.875rem;
+}
+
+
+
+#third-main-section > h2 {
+
+    font-weight: var(--fw-700);
+    text-align: left;
+    font-size: 1rem;
+    margin-bottom: 1.7rem;
+}
+
+#third-main-section > p {
+
+    text-align: left;
+    line-height: 1.7;
+    color: var(--dark-gray);
+}
+
+.third-main-section-products {
+
+    border: solid 1.5px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    margin-top: 2.5rem;
+    padding-left: 1.438rem;
+    padding-right: 1.438rem;
+    padding-bottom: 1.563rem;
+    padding-top: 1.563rem;
+    text-align: left;
+    position: relative;
+}
+
+.third-main-section-products h3 {
+
+    margin-top: 0px;
+    font-size: 1rem;
+    font-weight: var(--fw-700);
+    
+}
+
+.product-pledge-links {
+
+    color: var(--cyan);
+    font-weight: var(--fw-700);
+    transition: var(--trans);
+}
+
+.product-pledge-links:hover {
+    text-decoration: none;
+    color: var(--dark-cyan);
+}
+
+.third-main-section-products p {
+
+    margin-top: 2.125rem;
+    text-align: left;
+    line-height: 1.7;
+    color: var(--dark-gray);
+}
+
+.in-stock,
+.modal-in-stock {
+
+    display: inline-flex;
+    align-items: center;
+    
+
+}
+
+.in-stock-amount {
+    font-size: 1.5rem;
+    font-weight: var(--fw-700);
+    margin-right: 0.5rem;
+}
+
+.in-stock > span {
+
+    font-size: 1.5rem;
+    font-weight: var(--fw-700);
+    margin-right: 0.5rem;
+
+}
+
+#left {
+    color: var(--dark-gray); 
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.product-pledge-btn {
+
+    background: var(--cyan);
+    color: white;
+    border: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 3.5rem;
+    font-weight: var(--fw-700);
+    border-radius: 2rem;
+    display: block;
+    margin-top: 1.4rem;
+    transition: var(--trans);
+    
+}
+
+.product-pledge-btn:hover {
+    background: var(--dark-cyan);
+}
+
+#no-click-section,
+#no-click-section > h3,
+#no-click-section > a,
+#no-click-section > p,
+#no-click-section > .in-stock,
+#no-click-section > .product-pledge-btn,
+#no-reward-disable {
+
+    pointer-events: none;
+    
+}
+
+#no-click-section {
+
+    position: relative;
+}
+
+#no-click-section::after {
+
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+    background-color: rgba(250, 250, 250, 0.5);
+}
+
+
+
+/* Modal */
+
+#modal-background-overlay {
+
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: var(--trans);
+
+}
+
+.show-modal #modal-background-overlay {
+
+    display: block;
+    transition: var(--trans);
+}
+
+.modal {
+
+    display: none;
+    background-color: white;
+    margin-left: 1.563rem;
+    margin-right: 1.563rem;
+    margin-top: 7.375rem;
+    margin-bottom: 7.313rem;
+    border-radius: 7px;
+
+    padding-top: 2.313rem;
+    padding-bottom: 2.313rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    overflow: auto;
+    transition: var(--trans);
+    
+}
+
+.show-modal .modal {
+
+    display: block;
+    transition: var(--trans);
+}
+
+.modal-heading {
+
+    margin: 0;
+    display: inline;
+    font-size: 1.1rem;
+    font-weight: var(--fw-700);
+}
+
+#modal-close-btn {
+
+    float: right;
+    cursor: pointer;
+
+}
+
+.close-btn-x {
+
+    transition: var(--trans);
+
+}
+
+.close-btn-x:hover {
+
+    opacity: 1;
+}
+
+
+
+#modal-paragraph {
+
+    margin-top: 1.875rem;
+    margin-bottom: 1.875rem;
+    color: var(--dark-gray);
+    line-height: 1.7;
+
+}
+
+.modal-pledge-option {
+
+    border: solid 1.5px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    padding: 1.375rem 1.375rem;
+    margin-bottom: 1.75rem;
+    position: relative;
+    
+    
+
+} 
+
+.radio {
+    display: grid;
+    grid-template-areas: "radio product-name"
+                        "radio pledge-amount"; 
+    grid-template-columns: min-content auto;
+    grid-template-rows: auto auto;
+    column-gap: 1em; 
+}
+
+.radio__input {
+
+    grid-area: radio;
+    display: flex;
+    align-items: center;
+}
+
+.radio__input > input {
+
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.radio__input > input:checked + .radio__control {
+    background: radial-gradient(var(--cyan) 50%, rgba(255, 0, 0, 0) 51%);
+}
+
+.radio__control {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: solid 1.5px rgba(0, 0, 0, 0.3);
+    transition: var(--trans);
+    cursor: pointer;
+}
+
+.radio__control:hover {
+
+    border: solid 1.5px var(--cyan);
+} 
+
+.radio__label {
+    grid-area: product-name;
+    display: block;
+    cursor: pointer;
+    transition: var(--trans);
+}
+
+.pledge__amount {
+    grid-area: pledge-amount;
+    display: block;
+    color: var(--cyan);
+}
+
+.product__name {
+    transition: var(--trans);
+}
+
+.product__name:hover  {
+
+    color: var(--cyan);
+
+}
+
+#pledge-with-no-reward {
+
+    margin: auto;
+}
+
+
+.modal-pledge-heading-price > h5 {
+
+    font-weight: var(--fw-700);
+    font-size: 0.9rem;  
+    bottom: 5px;
+    margin-bottom: 5px;
+    transition: var(--trans);
+    cursor: pointer;
+
+
+
+}
+
+.modal-pledge-heading-price > h5:hover{
+    color: var(--cyan);
+}
+
+
+.custom-radio-btn:hover {
+
+    border: solid 1.5px var(--cyan);
+
+}
+
+.radio-btn-checkmark {
+
+    width: 100%;
+    height: 100%;
+    display: block; 
+    background: var(--cyan);
+    border-radius: 50%;
+    display: none;
+    
+}
+
+.custom-radio-btn input {
+    position: absolute;
+    opacity: 0;
+}
+
+.custom-radio-btn input:checked + .radio-btn-checkmark {
+    display: inline-block;
+}
+
+
+.modal-radioBtn-price {
+
+    color: var(--cyan);
+    display: inline-block;
+    margin-right: 2rem; 
+}
+
+.modal-pledge-paragraph {
+
+    display: inline-flex;
+    margin-top: 2.2rem;
+    color: var(--dark-gray);
+}
+
+#out-of-stock::after {
+
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+    background-color: rgba(250, 250, 250, 0.5);
+
+}
+
+.pledge-selection {
+
+    border-top:  solid 1.5px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    padding-top: 1.6rem;
+    display: none;
+    width: 100%;
+}
+
+.pledge-selection-heading {
+
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+    font-weight: var(--fw-500);
+}
+
+.input-btn-field {
+    
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+
+}
+
+.pledge-amount-input input {
+
+    height: 100%;
+    border: solid 1.5px rgba(0, 0, 0, 0.1);
+    border-radius: 2rem;
+    display: inline;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    width: 45%;
+}
+
+.pledge-amount-input:focus {
+    outline: none;
+    border: solid 2px var(--cyan); 
+}
+
+.pledge-amount-input.error input {
+    
+
+    border-color: red;
+}
+
+.pledge-submit-btn {
+
+    text-align: center;
+    background-color: var(--cyan);
+    color: white;
+    border: none;
+    height: 100%;
+    font-weight: var(--fw-700);
+    border-radius: 2rem;
+    display: inline;
+    width: 45%;
+    padding-top: auto;
+    padding-bottom: auto;
+    transition: var(--trans);
+
+}
+
+.pledge-submit-btn:hover {
+    background-color: var(--dark-cyan);
+}
+
+.error-message {
+    position: absolute;
+    bottom: 5px;
+    left: 25px;
+    font-family: inherit;
+    visibility: hidden;
+}
+
+
+.input-icon {
+    position: relative;
+    width: 45%;
+  }
   
+  .input-icon > i {
+    position: absolute;
+    display: block;
+    transform: translate(0, -50%);
+    top: 46%;
+    pointer-events: none;
+    width: 25px;
+    text-align: center;
+    font-style: normal;
+    font-weight: var(--fw-700);
+    color: var(--dark-gray);
+    margin-left: 1rem;
+  }
+  
+  .input-icon > input {
+    padding-left: 45px;
+    padding-right: 0;
+    width: 100%;
+    border: solid 1.5px rgba(0, 0, 0, 0.3);
+    border-radius: 2rem;
+    height: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    font-weight: var(--fw-700);
+    
+  }
+
+  .input-icon > input::placeholder {
+
+      font-weight: var(--fw-500);
+
+  }
+
+  #no-reward-disable::after {
+
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+    background-color: rgba(250, 250, 250, 0.5);
+
+}  
+
+.modal-pledge-complete {
+
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    
+    max-width: 33.75rem;
+    width: calc(100% - 3.2rem);
+    border-radius: 7px;
+
+    padding-left: 1.688rem;
+    padding-right: 1.688rem;
+    padding-top: 2.063rem;
+    padding-bottom: 2.063rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1050;
+    
+}
+
+#pledge-complete-icon {
+
+    margin: 0 auto;
+
+}
+
+#modal-pledge-complete-heading {
+
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2.25rem;
+    font-size: 1.2rem;
+    font-weight: var(--fw-700);
+
+}
+
+#modal-pledge-complete-paragraph {
+
+    text-align: center;
+    color: var(--dark-gray);
+    line-height: 1.7;
+    margin-bottom: 2.438rem;
+
+}
+
+#pledge-complete-btn {
+
+    border: none;
+    background-color: var(--cyan);
+    color: white;
+    font-weight: var(--fw-700);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 2rem;
+    margin: 0 auto;
+
+    width: 6.5rem;
+
+    transition: var(--trans);
+}
+
+#pledge-complete-btn:hover {
+    background-color: var(--dark-cyan);
+}
 </style>
